@@ -1,3 +1,4 @@
+
 <?php
 /**
  * Application model for CakePHP.
@@ -30,4 +31,14 @@ App::uses('Model', 'Model');
  * @package       app.Model
  */
 class AppModel extends Model {
+
+	public $actsAs = array(
+		'Tools.WhoDidIt',
+		'Tools.Logable' => array(
+			'userModel' => 'User', 
+			'userKey' => 'user_id',
+			'change' => 'full'
+		)
+	);
+
 }
