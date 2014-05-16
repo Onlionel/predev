@@ -15,6 +15,12 @@ class UsersController extends AppController {
  */
 	public $components = array('Paginator');
 
+
+	public function beforeFilter() {
+ 		$this->Auth->allow(array('login', 'add'));
+ 		parent::beforeFilter();		
+	}
+
 /**
  * index method
  *
@@ -100,5 +106,21 @@ class UsersController extends AppController {
 			$this->Session->setFlash(__('The user could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
+	}
+
+/**
+ * login method
+ *
+ * @throws Exception
+ * @return void
+ */
+	public function login() {
+		if ($this->request->is('post')) {
+			if ($this->Auth->login()) {
+				$this->redirect($this->Auth->redirect());
+			} else {
+				$this->Session->setFlash(__('Invalid username or password, try again'));
+			}
+		}
 	}
 }

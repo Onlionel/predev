@@ -41,4 +41,9 @@ class AppModel extends Model {
 		)
 	);
 
+	public function beforeSave($options = array()) {
+ 		$this->setUserIp($_SERVER['REMOTE_ADDR']);
+ 		$this->setUserData(array('User' => AuthComponent::user()));
+		return parent::beforeSave($options);
+	}
 }

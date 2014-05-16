@@ -31,4 +31,28 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+	public $components = array(
+		'DebugKit.Toolbar',
+		'Session' ,
+		'Auth' =>array(
+			'ajaxLogin' => 'users_login',
+			'authError'=> "U heeft geen toegang tot deze pagina",
+			'loginAction' => array('controller' => 'users', 'action' => 'login', 'admin' => false),
+			'loginError'=> "Gebruikersnaam/Wachtwoord komen niet overeen",
+			'loginRedirect'=>array('controller'=>'projects', 'action'=>'index'),
+			'logoutRedirect'=>array('controller'=>'users', 'action'=>'login'),
+			'authorize' => array(
+// 				'Controller',
+//				'Actions' => array('actionPath' => 'controllers')
+			),
+			'authenticate' => array(
+				'Form' => array(
+					'userModel' => 'User',
+//					'scope' => array( 'NOT' => array('User.status_id' => '0'))
+				)
+			),
+		),
+ 		'Acl',
+		'RequestHandler'
+	);
 }
