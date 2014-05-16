@@ -24,7 +24,7 @@ class AppSchema extends CakeSchema {
 
 	public $audiences = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => true, 'key' => 'primary'),
-		'name' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false, 'key' => 'unique'),
+		'name' => array('type' => 'string', 'null' => false, 'length' => 50, 'key' => 'unique', 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => null),
 		'created_by' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => true),
 		'modified' => array('type' => 'datetime', 'null' => true, 'default' => null),
@@ -38,7 +38,7 @@ class AppSchema extends CakeSchema {
 
 	public $dates = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => true, 'key' => 'primary'),
-		'title' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'unique'),
+		'title' => array('type' => 'string', 'null' => false, 'length' => 50, 'key' => 'unique', 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'date' => array('type' => 'date', 'null' => true, 'default' => null),
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => null),
 		'created_by' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => true),
@@ -76,7 +76,7 @@ class AppSchema extends CakeSchema {
 
 	public $locations = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => true, 'key' => 'primary'),
-		'name' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false, 'key' => 'unique'),
+		'name' => array('type' => 'string', 'null' => false, 'length' => 50, 'key' => 'unique', 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => null),
 		'created_by' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => true),
 		'modified' => array('type' => 'datetime', 'null' => true, 'default' => null),
@@ -140,7 +140,7 @@ class AppSchema extends CakeSchema {
 
 	public $purposes = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => true, 'key' => 'primary'),
-		'name' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false, 'key' => 'unique'),
+		'name' => array('type' => 'string', 'null' => false, 'length' => 50, 'key' => 'unique', 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => null),
 		'created_by' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => true),
 		'modified' => array('type' => 'datetime', 'null' => true, 'default' => null),
