@@ -11,6 +11,26 @@
 			<?php echo h($project['Project']['name']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Created'); ?></dt>
+		<dd>
+			<?php echo h($project['Project']['created']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Created By'); ?></dt>
+		<dd>
+			<?php echo h($project['Project']['created_by']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Modified'); ?></dt>
+		<dd>
+			<?php echo h($project['Project']['modified']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Modified By'); ?></dt>
+		<dd>
+			<?php echo h($project['Project']['modified_by']); ?>
+			&nbsp;
+		</dd>
 	</dl>
 </div>
 <div class="actions">
@@ -35,6 +55,10 @@
 		<th><?php echo __('Date Id'); ?></th>
 		<th><?php echo __('Location Id'); ?></th>
 		<th><?php echo __('Purpose Id'); ?></th>
+		<th><?php echo __('Created'); ?></th>
+		<th><?php echo __('Created By'); ?></th>
+		<th><?php echo __('Modified'); ?></th>
+		<th><?php echo __('Modified By'); ?></th>
 		<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($project['Event'] as $event): ?>
@@ -45,6 +69,10 @@
 			<td><?php echo $event['date_id']; ?></td>
 			<td><?php echo $event['location_id']; ?></td>
 			<td><?php echo $event['purpose_id']; ?></td>
+			<td><?php echo $event['created']; ?></td>
+			<td><?php echo $event['created_by']; ?></td>
+			<td><?php echo $event['modified']; ?></td>
+			<td><?php echo $event['modified_by']; ?></td>
 			<td class="actions">
 				<?php echo $this->Html->link(__('View'), array('controller' => 'events', 'action' => 'view', $event['id'])); ?>
 				<?php echo $this->Html->link(__('Edit'), array('controller' => 'events', 'action' => 'edit', $event['id'])); ?>

@@ -4,12 +4,20 @@
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('name'); ?></th>
+			<th><?php echo $this->Paginator->sort('created'); ?></th>
+			<th><?php echo $this->Paginator->sort('created_by'); ?></th>
+			<th><?php echo $this->Paginator->sort('modified'); ?></th>
+			<th><?php echo $this->Paginator->sort('modified_by'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($audiences as $audience): ?>
 	<tr>
 		<td><?php echo h($audience['Audience']['id']); ?>&nbsp;</td>
 		<td><?php echo h($audience['Audience']['name']); ?>&nbsp;</td>
+		<td><?php echo h($audience['Audience']['created']); ?>&nbsp;</td>
+		<td><?php echo h($audience['Audience']['created_by']); ?>&nbsp;</td>
+		<td><?php echo h($audience['Audience']['modified']); ?>&nbsp;</td>
+		<td><?php echo h($audience['Audience']['modified_by']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $audience['Audience']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $audience['Audience']['id'])); ?>

@@ -4,12 +4,20 @@
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('name'); ?></th>
+			<th><?php echo $this->Paginator->sort('created'); ?></th>
+			<th><?php echo $this->Paginator->sort('created_by'); ?></th>
+			<th><?php echo $this->Paginator->sort('modified'); ?></th>
+			<th><?php echo $this->Paginator->sort('modified_by'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($purposes as $purpose): ?>
 	<tr>
 		<td><?php echo h($purpose['Purpose']['id']); ?>&nbsp;</td>
 		<td><?php echo h($purpose['Purpose']['name']); ?>&nbsp;</td>
+		<td><?php echo h($purpose['Purpose']['created']); ?>&nbsp;</td>
+		<td><?php echo h($purpose['Purpose']['created_by']); ?>&nbsp;</td>
+		<td><?php echo h($purpose['Purpose']['modified']); ?>&nbsp;</td>
+		<td><?php echo h($purpose['Purpose']['modified_by']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $purpose['Purpose']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $purpose['Purpose']['id'])); ?>

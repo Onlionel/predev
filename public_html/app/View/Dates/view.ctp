@@ -16,6 +16,26 @@
 			<?php echo h($date['Date']['date']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Created'); ?></dt>
+		<dd>
+			<?php echo h($date['Date']['created']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Created By'); ?></dt>
+		<dd>
+			<?php echo h($date['Date']['created_by']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Modified'); ?></dt>
+		<dd>
+			<?php echo h($date['Date']['modified']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Modified By'); ?></dt>
+		<dd>
+			<?php echo h($date['Date']['modified_by']); ?>
+			&nbsp;
+		</dd>
 	</dl>
 </div>
 <div class="actions">
@@ -35,21 +55,21 @@
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
 		<th><?php echo __('Id'); ?></th>
-		<th><?php echo __('Activity Id'); ?></th>
-		<th><?php echo __('Audience Id'); ?></th>
-		<th><?php echo __('Date Id'); ?></th>
-		<th><?php echo __('Location Id'); ?></th>
-		<th><?php echo __('Purpose Id'); ?></th>
+		<th><?php echo __('Name'); ?></th>
+		<th><?php echo __('Created'); ?></th>
+		<th><?php echo __('Created By'); ?></th>
+		<th><?php echo __('Modified'); ?></th>
+		<th><?php echo __('Modified By'); ?></th>
 		<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($date['Project'] as $project): ?>
 		<tr>
 			<td><?php echo $project['id']; ?></td>
-			<td><?php echo $project['activity_id']; ?></td>
-			<td><?php echo $project['audience_id']; ?></td>
-			<td><?php echo $project['date_id']; ?></td>
-			<td><?php echo $project['location_id']; ?></td>
-			<td><?php echo $project['purpose_id']; ?></td>
+			<td><?php echo $project['name']; ?></td>
+			<td><?php echo $project['created']; ?></td>
+			<td><?php echo $project['created_by']; ?></td>
+			<td><?php echo $project['modified']; ?></td>
+			<td><?php echo $project['modified_by']; ?></td>
 			<td class="actions">
 				<?php echo $this->Html->link(__('View'), array('controller' => 'projects', 'action' => 'view', $project['id'])); ?>
 				<?php echo $this->Html->link(__('Edit'), array('controller' => 'projects', 'action' => 'edit', $project['id'])); ?>
