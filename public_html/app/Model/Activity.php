@@ -3,7 +3,7 @@ App::uses('AppModel', 'Model');
 /**
  * Activity Model
  *
- * @property Project $Project
+ * @property Event $Event
  */
 class Activity extends AppModel {
 
@@ -33,8 +33,8 @@ class Activity extends AppModel {
  * @var array
  */
 	public $hasMany = array(
-		'Project' => array(
-			'className' => 'Project',
+		'Event' => array(
+			'className' => 'Event',
 			'foreignKey' => 'activity_id',
 			'dependent' => false,
 			'conditions' => '',

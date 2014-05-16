@@ -33,9 +33,13 @@
 			<?php echo $this->Html->link($event['Purpose']['name'], array('controller' => 'purposes', 'action' => 'view', $event['Purpose']['id'])); ?>
 		</td>
 		<td><?php echo h($event['Event']['created']); ?>&nbsp;</td>
-		<td><?php echo h($event['Event']['created_by']); ?>&nbsp;</td>
+		<td>
+			<?php echo $this->Html->link($event['CreatedBy']['id'], array('controller' => 'users', 'action' => 'view', $event['CreatedBy']['id'])); ?>
+		</td>
 		<td><?php echo h($event['Event']['modified']); ?>&nbsp;</td>
-		<td><?php echo h($event['Event']['modified_by']); ?>&nbsp;</td>
+		<td>
+			<?php echo $this->Html->link($event['ModifiedBy']['id'], array('controller' => 'users', 'action' => 'view', $event['ModifiedBy']['id'])); ?>
+		</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $event['Event']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $event['Event']['id'])); ?>
@@ -72,6 +76,8 @@
 		<li><?php echo $this->Html->link(__('New Location'), array('controller' => 'locations', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Purposes'), array('controller' => 'purposes', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Purpose'), array('controller' => 'purposes', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Created By'), array('controller' => 'users', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Projects'), array('controller' => 'projects', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Project'), array('controller' => 'projects', 'action' => 'add')); ?> </li>
 	</ul>

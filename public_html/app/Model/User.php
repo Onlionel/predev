@@ -1,6 +1,5 @@
 <?php
 App::uses('AppModel', 'Model');
-App::uses('AuthComponent', 'Controller/Component');
 /**
  * User Model
  *
@@ -95,6 +94,4 @@ class User extends AppModel {
 		}
 		return parent::beforeSave($options);;
 	}
-
 }
-

@@ -17,9 +17,13 @@
 		<td><?php echo h($date['Date']['title']); ?>&nbsp;</td>
 		<td><?php echo h($date['Date']['date']); ?>&nbsp;</td>
 		<td><?php echo h($date['Date']['created']); ?>&nbsp;</td>
-		<td><?php echo h($date['Date']['created_by']); ?>&nbsp;</td>
+		<td>
+			<?php echo $this->Html->link($date['CreatedBy']['id'], array('controller' => 'users', 'action' => 'view', $date['CreatedBy']['id'])); ?>
+		</td>
 		<td><?php echo h($date['Date']['modified']); ?>&nbsp;</td>
-		<td><?php echo h($date['Date']['modified_by']); ?>&nbsp;</td>
+		<td>
+			<?php echo $this->Html->link($date['ModifiedBy']['id'], array('controller' => 'users', 'action' => 'view', $date['ModifiedBy']['id'])); ?>
+		</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $date['Date']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $date['Date']['id'])); ?>
@@ -46,7 +50,9 @@
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('New Date'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Projects'), array('controller' => 'projects', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Project'), array('controller' => 'projects', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Created By'), array('controller' => 'users', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Events'), array('controller' => 'events', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Event'), array('controller' => 'events', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
