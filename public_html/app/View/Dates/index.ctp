@@ -4,12 +4,14 @@
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('title'); ?></th>
+			<th><?php echo $this->Paginator->sort('date'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($dates as $date): ?>
 	<tr>
 		<td><?php echo h($date['Date']['id']); ?>&nbsp;</td>
 		<td><?php echo h($date['Date']['title']); ?>&nbsp;</td>
+		<td><?php echo h($date['Date']['date']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $date['Date']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $date['Date']['id'])); ?>

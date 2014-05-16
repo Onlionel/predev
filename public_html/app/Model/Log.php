@@ -35,13 +35,13 @@ class Log extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
-		'Model' => array(
-			'className' => 'Model',
-			'foreignKey' => 'model_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
+//		'Model' => array(
+//			'className' => 'Model',
+//			'foreignKey' => 'model_id',
+//			'conditions' => '',
+//			'fields' => '',
+//			'order' => ''
+//		),
 		'User' => array(
 			'className' => 'User',
 			'foreignKey' => 'user_id',
@@ -49,12 +49,12 @@ class Log extends AppModel {
 			'fields' => '',
 			'order' => ''
 		),
-		'Version' => array(
-			'className' => 'Version',
-			'foreignKey' => 'version_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		)
+//		'Version' => array(
+//			'className' => 'Version',
+//			'foreignKey' => 'version_id',
+//			'conditions' => '',
+//			'fields' => '',
+//			'order' => ''
+//		)
 	);
 }

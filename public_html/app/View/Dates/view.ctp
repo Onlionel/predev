@@ -11,6 +11,11 @@
 			<?php echo h($date['Date']['title']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Date'); ?></dt>
+		<dd>
+			<?php echo h($date['Date']['date']); ?>
+			&nbsp;
+		</dd>
 	</dl>
 </div>
 <div class="actions">

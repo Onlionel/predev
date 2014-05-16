@@ -3,11 +3,7 @@ App::uses('AppModel', 'Model');
 /**
  * Project Model
  *
- * @property Activity $Activity
- * @property Audience $Audience
- * @property Date $Date
- * @property Location $Location
- * @property Purpose $Purpose
+ * @property Event $Event
  */
 class Project extends AppModel {
 
@@ -17,49 +13,9 @@ class Project extends AppModel {
  * @var array
  */
 	public $validate = array(
-		'activity_id' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'audience_id' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'date_id' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'location_id' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'purpose_id' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
+		'name' => array(
+			'notEmpty' => array(
+				'rule' => array('notEmpty'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -72,45 +28,24 @@ class Project extends AppModel {
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 /**
- * belongsTo associations
+ * hasAndBelongsToMany associations
  *
  * @var array
  */
-	public $belongsTo = array(
-		'Activity' => array(
-			'className' => 'Activity',
-			'foreignKey' => 'activity_id',
+	public $hasAndBelongsToMany = array(
+		'Event' => array(
+			'className' => 'Event',
+			'joinTable' => 'projects_events',
+			'foreignKey' => 'project_id',
+			'associationForeignKey' => 'event_id',
+			'unique' => 'keepExisting',
 			'conditions' => '',
 			'fields' => '',
-			'order' => ''
-		),
-		'Audience' => array(
-			'className' => 'Audience',
-			'foreignKey' => 'audience_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
-		'Date' => array(
-			'className' => 'Date',
-			'foreignKey' => 'date_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
-		'Location' => array(
-			'className' => 'Location',
-			'foreignKey' => 'location_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
-		'Purpose' => array(
-			'className' => 'Purpose',
-			'foreignKey' => 'purpose_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'finderQuery' => '',
 		)
 	);
+
 }
