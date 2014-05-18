@@ -83,35 +83,40 @@ class Event extends AppModel {
 			'foreignKey' => 'activity_id',
 			'conditions' => '',
 			'fields' => '',
-			'order' => ''
+			'order' => '',
+			'counterCache' => true
 		),
 		'Audience' => array(
 			'className' => 'Audience',
 			'foreignKey' => 'audience_id',
 			'conditions' => '',
 			'fields' => '',
-			'order' => ''
+			'order' => '',
+			'counterCache' => true
 		),
 		'Date' => array(
 			'className' => 'Date',
 			'foreignKey' => 'date_id',
 			'conditions' => '',
 			'fields' => '',
-			'order' => ''
+			'order' => '',
+			'counterCache' => true
 		),
 		'Location' => array(
 			'className' => 'Location',
 			'foreignKey' => 'location_id',
 			'conditions' => '',
 			'fields' => '',
-			'order' => ''
+			'order' => '',
+			'counterCache' => true
 		),
 		'Purpose' => array(
 			'className' => 'Purpose',
 			'foreignKey' => 'purpose_id',
 			'conditions' => '',
 			'fields' => '',
-			'order' => ''
+			'order' => '',
+			'counterCache' => true
 		)
 	);
 
