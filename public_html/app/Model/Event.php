@@ -74,7 +74,7 @@ class Event extends AppModel {
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				'on' => 'update', // Limit validation to 'create' or 'update' operations
 			),
 		),
 		'audience_id' => array(
@@ -84,7 +84,7 @@ class Event extends AppModel {
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				'on' => 'update', // Limit validation to 'create' or 'update' operations
 			),
 		),
 		'date_id' => array(
@@ -94,7 +94,7 @@ class Event extends AppModel {
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				'on' => 'update', // Limit validation to 'create' or 'update' operations
 			),
 		),
 		'location_id' => array(
@@ -104,7 +104,7 @@ class Event extends AppModel {
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				'on' => 'update', // Limit validation to 'create' or 'update' operations
 			),
 		),
 		'purpose_id' => array(
@@ -114,7 +114,7 @@ class Event extends AppModel {
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				'on' => 'update', // Limit validation to 'create' or 'update' operations
 			),
 		),
 	);
@@ -170,6 +170,27 @@ class Event extends AppModel {
 	);
 
 /**
+ * hasMany associations
+ *
+ * @var array
+ */
+	public $hasMany = array(
+		'Log' => array(
+			'className' => 'Log',
+			'foreignKey' => 'model_id',
+			'dependent' => false,
+			'conditions' => array('model' => 'Event'),
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		)
+	);
+
+/**
  * hasAndBelongsToMany associations
  *
  * @var array
@@ -180,6 +201,19 @@ class Event extends AppModel {
 			'joinTable' => 'projects_events',
 			'foreignKey' => 'event_id',
 			'associationForeignKey' => 'project_id',
+			'unique' => 'keepExisting',
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'finderQuery' => '',
+		),
+		'MediaKey' => array(
+			'className' => 'MediaKey',
+			'joinTable' => 'events_media_keys',
+			'foreignKey' => 'event_id',
+			'associationForeignKey' => 'media_key_id',
 			'unique' => 'keepExisting',
 			'conditions' => '',
 			'fields' => '',

@@ -41,9 +41,17 @@ class AppModel extends Model {
 		)
 	);
 
-	public function beforeSave($options = array()) {
+	protected function setLogableBehaviorUserData($options = array()) {
  		$this->setUserIp($_SERVER['REMOTE_ADDR']);
  		$this->setUserData(array('User' => AuthComponent::user()));
+	}
+	
+	public function beforeSave($options = array()) {
+		$this->setLogableBehaviorUserData($options);
 		return parent::beforeSave($options);
+	}
+	public function beforeDelete($options = array()) {
+		$this->setLogableBehaviorUserData($options);
+		return parent::beforeDelete($options);
 	}
 }

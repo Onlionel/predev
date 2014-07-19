@@ -48,11 +48,33 @@ class EventsController extends AppController {
 	public function add() {
 		if ($this->request->is('post')) {
 			$this->Event->create();
-			if ($this->Event->save($this->request->data)) {
-				$this->Session->setFlash(__('The event has been saved.'));
-				return $this->redirect(array('action' => 'index'));
+			if (empty($this->request->data['Event']['activity_id'])) {
 			} else {
-				$this->Session->setFlash(__('The event could not be saved. Please, try again.'));
+				unset($this->request->data['Activity']);
+			}
+			if (empty($this->request->data['Event']['audience_id'])) {
+			} else {
+				unset($this->request->data['Audience']);
+			}
+			if (empty($this->request->data['Event']['date_id'])) {
+				$this->request->data['Date']['title'] = $this->Event->Date->deconstruct('date', $this->request->data['Date']['date']);
+			} else {
+				unset($this->request->data['Date']);
+			}
+			if (empty($this->request->data['Event']['location_id'])) {
+			} else {
+				unset($this->request->data['Location']);
+			}
+			if (empty($this->request->data['Event']['purpose_id'])) {
+			} else {
+				unset($this->request->data['Purpose']);
+			}
+			debug($this->request->data);
+			if ($this->Event->saveAll($this->request->data)) {
+				$this->Session->setFlash(__('The event has been saved.'));
+// 				return $this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(sprintf(__('The event could not be saved. %s'), debug($this->Event->validationErrors)));
 			}
 		}
 		$activities = $this->Event->Activity->find('list');
@@ -61,7 +83,12 @@ class EventsController extends AppController {
 		$locations = $this->Event->Location->find('list');
 		$purposes = $this->Event->Purpose->find('list');
 		$projects = $this->Event->Project->find('list');
-		$this->set(compact('activities', 'audiences', 'dates', 'locations', 'purposes', 'projects'));
+		$this->Event->MediaKey->displayField = 'display';
+		$this->Event->MediaKey->virtualFields += $this->Event->MediaKey->foreignFields;
+		$mediaKeys = $this->Event->MediaKey->find('list', array(
+			'joins' => $this->Event->MediaKey->joins
+		));
+		$this->set(compact('activities', 'audiences', 'dates', 'locations', 'purposes', 'projects', 'mediaKeys'));
 	}
 
 /**
@@ -92,7 +119,12 @@ class EventsController extends AppController {
 		$locations = $this->Event->Location->find('list');
 		$purposes = $this->Event->Purpose->find('list');
 		$projects = $this->Event->Project->find('list');
-		$this->set(compact('activities', 'audiences', 'dates', 'locations', 'purposes', 'projects'));
+		$this->Event->MediaKey->displayField = 'display';
+		$this->Event->MediaKey->virtualFields += $this->Event->MediaKey->foreignFields;
+		$mediaKeys = $this->Event->MediaKey->find('list', array(
+			'joins' => $this->Event->MediaKey->joins
+		));
+		$this->set(compact('activities', 'audiences', 'dates', 'locations', 'purposes', 'projects', 'mediaKeys'));
 	}
 
 /**

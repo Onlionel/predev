@@ -4,12 +4,20 @@
 		<legend><?php echo __('Edit Event'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
-		echo $this->Form->input('activity_id');
-		echo $this->Form->input('audience_id');
-		echo $this->Form->input('date_id');
-		echo $this->Form->input('location_id');
-		echo $this->Form->input('purpose_id');
-		echo $this->Form->input('Project');
+		echo $this->Form->input('activity_id', array('empty' => true));
+		echo $this->Form->input('Activity.name');
+		echo $this->Form->input('audience_id', array('empty' => true));
+		echo $this->Form->input('Audience.name');
+		echo $this->Form->input('date_id', array('empty' => true));
+		echo $this->Form->input('Date.date');
+		echo $this->Form->input('time_id', array('empty' => true));
+		echo $this->Form->input('Time.time');
+		echo $this->Form->input('location_id', array('empty' => true));
+		echo $this->Form->input('Location.name');
+		echo $this->Form->input('purpose_id', array('empty' => true));
+		echo $this->Form->input('Purpose.name');
+		echo $this->Form->input('Project', array('multiple' => 'checkbox'));
+		echo $this->Form->input('MediaKey', array('multiple' => 'checkbox'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
