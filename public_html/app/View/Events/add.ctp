@@ -8,9 +8,9 @@
 		echo $this->Form->input('audience_id', array('empty' => true));
 		echo $this->Form->input('Audience.name');
 		echo $this->Form->input('date_id', array('empty' => true));
-		echo $this->Form->input('Date.date');
+		echo $this->Form->input('Date.date', array('dateFormat' => 'YMD'));
 		echo $this->Form->input('time_id', array('empty' => true));
-		echo $this->Form->input('Time.time');
+		echo $this->Form->input('Time.time', array('timeFormat' => '24'));
 		echo $this->Form->input('location_id', array('empty' => true));
 		echo $this->Form->input('Location.name');
 		echo $this->Form->input('purpose_id', array('empty' => true));

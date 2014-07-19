@@ -1,19 +1,22 @@
 <?php
 App::uses('AppModel', 'Model');
 /**
- * Media Model
+ * Time Model
  *
- * @property Foo $Foo
- * @property MediaFiles $MediaFiles
+ * @property Event $Event
  */
-class Media extends AppModel {
+class Time extends AppModel {
+
+	public $virtualFields = array(
+		'name' => "CONCAT(Time.time, ' ', Time.title)"
+	);
 
 /**
  * Display field
  *
  * @var string
  */
-	public $displayField = 'title';
+	public $displayField = 'name';
 
 /**
  * Validation rules
@@ -22,18 +25,28 @@ class Media extends AppModel {
  */
 	public $validate = array(
 		'id' => array(
-			'uuid' => array(
-				'rule' => array('uuid'),
+			'naturalNumber' => array(
+				'rule' => array('naturalNumber'),
 				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
+				'allowEmpty' => true,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'title' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
+// 		'title' => array(
+// 			'notEmpty' => array(
+// 				'rule' => array('alphaNumeric'),
+// 				//'message' => 'Your custom message here',
+// 				//'allowEmpty' => false,
+// 				//'required' => false,
+// 				//'last' => false, // Stop validation after this rule
+// 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+// 			),
+// 		),
+		'time' => array(
+			'time' => array(
+				'rule' => array('time'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -91,9 +104,9 @@ class Media extends AppModel {
  * @var array
  */
 	public $hasMany = array(
-		'MediaFiles' => array(
-			'className' => 'MediaFiles',
-			'foreignKey' => 'media_id',
+		'Event' => array(
+			'className' => 'Event',
+			'foreignKey' => 'time_id',
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
@@ -103,19 +116,7 @@ class Media extends AppModel {
 			'exclusive' => '',
 			'finderQuery' => '',
 			'counterQuery' => ''
-		),
-		'Log' => array(
-			'className' => 'Log',
-			'foreignKey' => 'model_guid',
-			'dependent' => false,
-			'conditions' => array('model' => 'Media'),
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
 		)
 	);
+
 }

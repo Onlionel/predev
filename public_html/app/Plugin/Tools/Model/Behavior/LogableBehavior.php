@@ -470,10 +470,10 @@ class LogableBehavior extends ModelBehavior {
 			$logData[$this->settings[$Model->alias]['foreignKey']] = $id;
 		}
 		if (!empty($id) && is_integer($id) && $this->Log->hasField('model_id')) {
-			$logData['model_id']['foreignKey'] = $id;
+			$logData['model_id'] = $id;
 		}
 		if (!empty($id) && $this->Log->hasField('model_guid')) {
-			$logData['model_id']['foreignKey'] = $id;
+			$logData['model_guid'] = $id;
 		}
 		if ($this->Log->hasField('description')) {
 			$logData['description'] = $Model->alias . ' ';

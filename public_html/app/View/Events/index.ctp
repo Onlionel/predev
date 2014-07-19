@@ -6,6 +6,7 @@
 			<th><?php echo $this->Paginator->sort('activity_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('audience_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('date_id'); ?></th>
+			<th><?php echo $this->Paginator->sort('time_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('location_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('purpose_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
@@ -24,7 +25,10 @@
 			<?php echo $this->Html->link($event['Audience']['name'], array('controller' => 'audiences', 'action' => 'view', $event['Audience']['id'])); ?>
 		</td>
 		<td>
-			<?php echo $this->Html->link($event['Date']['title'], array('controller' => 'dates', 'action' => 'view', $event['Date']['id'])); ?>
+			<?php echo $this->Html->link($event['Date']['name'], array('controller' => 'dates', 'action' => 'view', $event['Date']['id'])); ?>
+		</td>
+		<td>
+			<?php echo $this->Html->link($event['Time']['name'], array('controller' => 'times', 'action' => 'view', $event['Time']['id'])); ?>
 		</td>
 		<td>
 			<?php echo $this->Html->link($event['Location']['name'], array('controller' => 'locations', 'action' => 'view', $event['Location']['id'])); ?>
@@ -34,11 +38,11 @@
 		</td>
 		<td><?php echo h($event['Event']['created']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($event['CreatedBy']['id'], array('controller' => 'users', 'action' => 'view', $event['CreatedBy']['id'])); ?>
+			<?php echo $this->Html->link($event['CreatedBy']['username'], array('controller' => 'users', 'action' => 'view', $event['CreatedBy']['id'])); ?>
 		</td>
 		<td><?php echo h($event['Event']['modified']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($event['ModifiedBy']['id'], array('controller' => 'users', 'action' => 'view', $event['ModifiedBy']['id'])); ?>
+			<?php echo $this->Html->link($event['ModifiedBy']['username'], array('controller' => 'users', 'action' => 'view', $event['ModifiedBy']['id'])); ?>
 		</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $event['Event']['id'])); ?>
@@ -72,13 +76,19 @@
 		<li><?php echo $this->Html->link(__('New Audience'), array('controller' => 'audiences', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Dates'), array('controller' => 'dates', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Date'), array('controller' => 'dates', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Times'), array('controller' => 'times', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Time'), array('controller' => 'times', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Locations'), array('controller' => 'locations', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Location'), array('controller' => 'locations', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Purposes'), array('controller' => 'purposes', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Purpose'), array('controller' => 'purposes', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Created By'), array('controller' => 'users', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Logs'), array('controller' => 'logs', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Log'), array('controller' => 'logs', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Projects'), array('controller' => 'projects', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Project'), array('controller' => 'projects', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Media Keys'), array('controller' => 'media_keys', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Media Key'), array('controller' => 'media_keys', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

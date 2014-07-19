@@ -81,7 +81,8 @@ class MediaKey extends AppModel {
 			'foreignKey' => 'media_file_id',
 			'conditions' => '',
 			'fields' => '',
-			'order' => ''
+			'order' => '',
+			'counterCache' => true
 		)
 	);
 

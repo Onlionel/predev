@@ -12,7 +12,7 @@ App::uses('AppModel', 'Model');
  */
 class Event extends AppModel {
 	public $foreignFields = array(
-		'display' => "CONCAT(Activity.name, ' with ', Audience.name, ' on ', Date.date, ' at ', Location.name, ' for ', Purpose.name)"
+		'display' => "CONCAT(Activity.name, ' with ', Audience.name, ' on ', Date.date, ' starting ', `Time`.`time`, ' at ', Location.name, ' for ', Purpose.name)"
 	);
 /*
 	public $displayField = 'display';
@@ -44,6 +44,14 @@ class Event extends AppModel {
 			)
 		),
 		array(
+			'table' => 'times',
+			'alias' => 'Time',
+			'type' => 'LEFT',
+			'conditions' => array(
+				'Time.id = Event.time_id',
+			)
+		),
+		array(
 			'table' => 'locations',
 			'alias' => 'Location',
 			'type' => 'LEFT',
@@ -71,50 +79,60 @@ class Event extends AppModel {
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
+				'allowEmpty' => true,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
-				'on' => 'update', // Limit validation to 'create' or 'update' operations
+				//'on' => 'update', // Limit validation to 'create' or 'update' operations
 			),
 		),
 		'audience_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
+				'allowEmpty' => true,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
-				'on' => 'update', // Limit validation to 'create' or 'update' operations
+				//'on' => 'update', // Limit validation to 'create' or 'update' operations
 			),
 		),
 		'date_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
+				'allowEmpty' => true,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
-				'on' => 'update', // Limit validation to 'create' or 'update' operations
+				//'on' => 'update', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'time_id' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
+				//'message' => 'Your custom message here',
+				'allowEmpty' => true,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'update', // Limit validation to 'create' or 'update' operations
 			),
 		),
 		'location_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
+				'allowEmpty' => true,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
-				'on' => 'update', // Limit validation to 'create' or 'update' operations
+				//'on' => 'update', // Limit validation to 'create' or 'update' operations
 			),
 		),
 		'purpose_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
+				'allowEmpty' => true,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
-				'on' => 'update', // Limit validation to 'create' or 'update' operations
+				//'on' => 'update', // Limit validation to 'create' or 'update' operations
 			),
 		),
 	);
@@ -146,6 +164,14 @@ class Event extends AppModel {
 		'Date' => array(
 			'className' => 'Date',
 			'foreignKey' => 'date_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'counterCache' => true
+		),
+		'Time' => array(
+			'className' => 'Time',
+			'foreignKey' => 'time_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => '',

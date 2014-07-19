@@ -1,39 +1,39 @@
-<div class="audiences view">
-<h2><?php echo __('Audience'); ?></h2>
+<div class="times view">
+<h2><?php echo __('Time'); ?></h2>
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>
-			<?php echo h($audience['Audience']['id']); ?>
+			<?php echo h($time['Time']['id']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Name'); ?></dt>
+		<dt><?php echo __('Title'); ?></dt>
 		<dd>
-			<?php echo h($audience['Audience']['name']); ?>
+			<?php echo h($time['Time']['title']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Time'); ?></dt>
+		<dd>
+			<?php echo h($time['Time']['time']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Created'); ?></dt>
 		<dd>
-			<?php echo h($audience['Audience']['created']); ?>
+			<?php echo h($time['Time']['created']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Created By'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($audience['CreatedBy']['username'], array('controller' => 'users', 'action' => 'view', $audience['CreatedBy']['id'])); ?>
+			<?php echo $this->Html->link($time['CreatedBy']['username'], array('controller' => 'users', 'action' => 'view', $time['CreatedBy']['id'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Modified'); ?></dt>
 		<dd>
-			<?php echo h($audience['Audience']['modified']); ?>
+			<?php echo h($time['Time']['modified']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Modified By'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($audience['ModifiedBy']['username'], array('controller' => 'users', 'action' => 'view', $audience['ModifiedBy']['id'])); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Event Count'); ?></dt>
-		<dd>
-			<?php echo h($audience['Audience']['event_count']); ?>
+			<?php echo $this->Html->link($time['ModifiedBy']['username'], array('controller' => 'users', 'action' => 'view', $time['ModifiedBy']['id'])); ?>
 			&nbsp;
 		</dd>
 	</dl>
@@ -41,10 +41,10 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Edit Audience'), array('action' => 'edit', $audience['Audience']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Audience'), array('action' => 'delete', $audience['Audience']['id']), array(), __('Are you sure you want to delete # %s?', $audience['Audience']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Audiences'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Audience'), array('action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Edit Time'), array('action' => 'edit', $time['Time']['id'])); ?> </li>
+		<li><?php echo $this->Form->postLink(__('Delete Time'), array('action' => 'delete', $time['Time']['id']), array(), __('Are you sure you want to delete # %s?', $time['Time']['id'])); ?> </li>
+		<li><?php echo $this->Html->link(__('List Times'), array('action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Time'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Created By'), array('controller' => 'users', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Events'), array('controller' => 'events', 'action' => 'index')); ?> </li>
@@ -53,7 +53,7 @@
 </div>
 <div class="related">
 	<h3><?php echo __('Related Events'); ?></h3>
-	<?php if (!empty($audience['Event'])): ?>
+	<?php if (!empty($time['Event'])): ?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
 		<th><?php echo __('Id'); ?></th>
@@ -69,7 +69,7 @@
 		<th><?php echo __('Modified By'); ?></th>
 		<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
-	<?php foreach ($audience['Event'] as $event): ?>
+	<?php foreach ($time['Event'] as $event): ?>
 		<tr>
 			<td><?php echo $event['id']; ?></td>
 			<td><?php echo $event['activity_id']; ?></td>

@@ -57,9 +57,14 @@ class EventsController extends AppController {
 				unset($this->request->data['Audience']);
 			}
 			if (empty($this->request->data['Event']['date_id'])) {
-				$this->request->data['Date']['title'] = $this->Event->Date->deconstruct('date', $this->request->data['Date']['date']);
+// 				$this->request->data['Date']['title'] = $this->Event->Date->deconstruct('date', $this->request->data['Date']['date']);
 			} else {
 				unset($this->request->data['Date']);
+			}
+			if (empty($this->request->data['Event']['time_id'])) {
+// 				$this->request->data['Time']['title'] = $this->Event->Time->deconstruct('time', $this->request->data['Time']['time']);
+			} else {
+				unset($this->request->data['Time']);
 			}
 			if (empty($this->request->data['Event']['location_id'])) {
 			} else {
@@ -69,10 +74,10 @@ class EventsController extends AppController {
 			} else {
 				unset($this->request->data['Purpose']);
 			}
-			debug($this->request->data);
+// 			debug($this->request->data);
 			if ($this->Event->saveAll($this->request->data)) {
 				$this->Session->setFlash(__('The event has been saved.'));
-// 				return $this->redirect(array('action' => 'index'));
+				return $this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(sprintf(__('The event could not be saved. %s'), debug($this->Event->validationErrors)));
 			}
@@ -80,6 +85,7 @@ class EventsController extends AppController {
 		$activities = $this->Event->Activity->find('list');
 		$audiences = $this->Event->Audience->find('list');
 		$dates = $this->Event->Date->find('list');
+		$times = $this->Event->Time->find('list');
 		$locations = $this->Event->Location->find('list');
 		$purposes = $this->Event->Purpose->find('list');
 		$projects = $this->Event->Project->find('list');
@@ -88,7 +94,7 @@ class EventsController extends AppController {
 		$mediaKeys = $this->Event->MediaKey->find('list', array(
 			'joins' => $this->Event->MediaKey->joins
 		));
-		$this->set(compact('activities', 'audiences', 'dates', 'locations', 'purposes', 'projects', 'mediaKeys'));
+		$this->set(compact('activities', 'audiences', 'dates', 'times', 'locations', 'purposes', 'projects', 'mediaKeys'));
 	}
 
 /**
@@ -103,11 +109,38 @@ class EventsController extends AppController {
 			throw new NotFoundException(__('Invalid event'));
 		}
 		if ($this->request->is(array('post', 'put'))) {
-			if ($this->Event->save($this->request->data)) {
+			if (empty($this->request->data['Event']['activity_id'])) {
+			} else {
+				unset($this->request->data['Activity']);
+			}
+			if (empty($this->request->data['Event']['audience_id'])) {
+			} else {
+				unset($this->request->data['Audience']);
+			}
+			if (empty($this->request->data['Event']['date_id'])) {
+// 				$this->request->data['Date']['title'] = $this->Event->Date->deconstruct('date', $this->request->data['Date']['date']);
+			} else {
+				unset($this->request->data['Date']);
+			}
+			if (empty($this->request->data['Event']['time_id'])) {
+// 				$this->request->data['Time']['title'] = $this->Event->Time->deconstruct('time', $this->request->data['Time']['time']);
+			} else {
+				unset($this->request->data['Time']);
+			}
+			if (empty($this->request->data['Event']['location_id'])) {
+			} else {
+				unset($this->request->data['Location']);
+			}
+			if (empty($this->request->data['Event']['purpose_id'])) {
+			} else {
+				unset($this->request->data['Purpose']);
+			}
+// 			debug($this->request->data);
+			if ($this->Event->saveAll($this->request->data)) {
 				$this->Session->setFlash(__('The event has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The event could not be saved. Please, try again.'));
+				$this->Session->setFlash(sprintf(__('The event could not be saved: %s'), var_export($this->Event->validationErrors, true)));
 			}
 		} else {
 			$options = array('conditions' => array('Event.' . $this->Event->primaryKey => $id));
@@ -116,6 +149,7 @@ class EventsController extends AppController {
 		$activities = $this->Event->Activity->find('list');
 		$audiences = $this->Event->Audience->find('list');
 		$dates = $this->Event->Date->find('list');
+		$times = $this->Event->Time->find('list');
 		$locations = $this->Event->Location->find('list');
 		$purposes = $this->Event->Purpose->find('list');
 		$projects = $this->Event->Project->find('list');
@@ -124,7 +158,7 @@ class EventsController extends AppController {
 		$mediaKeys = $this->Event->MediaKey->find('list', array(
 			'joins' => $this->Event->MediaKey->joins
 		));
-		$this->set(compact('activities', 'audiences', 'dates', 'locations', 'purposes', 'projects', 'mediaKeys'));
+		$this->set(compact('activities', 'audiences', 'dates', 'times', 'locations', 'purposes', 'projects', 'mediaKeys'));
 	}
 
 /**

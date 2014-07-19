@@ -159,7 +159,42 @@ class MediaFile extends AppModel {
 			'foreignKey' => 'media_id',
 			'conditions' => '',
 			'fields' => '',
-			'order' => ''
+			'order' => '',
+			'counterCache' => true
 		)
+	);
+
+/**
+ * hasMany associations
+ *
+ * @var array
+ */
+	public $hasMany = array(
+		'Log' => array(
+			'className' => 'Log',
+			'foreignKey' => 'model_guid',
+			'dependent' => false,
+			'conditions' => array('model' => 'MediaFile'),
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'MediaKey' => array(
+			'className' => 'MediaKey',
+			'foreignKey' => 'media_file_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
 	);
 }
