@@ -11,6 +11,55 @@ App::uses('AppModel', 'Model');
  * @property Project $Project
  */
 class Event extends AppModel {
+	public $foreignFields = array(
+		'display' => "CONCAT(Activity.name, ' with ', Audience.name, ' on ', Date.date, ' at ', Location.name, ' for ', Purpose.name)"
+	);
+/*
+	public $displayField = 'display';
+	public $recursive = 2;
+*/
+	public $joins = array(
+		array(
+			'table' => 'audiences',
+			'alias' => 'Audience',
+			'type' => 'LEFT',
+			'conditions' => array(
+				'Audience.id = Event.audience_id',
+			)
+		),
+		array(
+			'table' => 'activities',
+			'alias' => 'Activity',
+			'type' => 'LEFT',
+			'conditions' => array(
+				'Activity.id = Event.activity_id',
+			)
+		),
+		array(
+			'table' => 'dates',
+			'alias' => 'Date',
+			'type' => 'LEFT',
+			'conditions' => array(
+				'Date.id = Event.date_id',
+			)
+		),
+		array(
+			'table' => 'locations',
+			'alias' => 'Location',
+			'type' => 'LEFT',
+			'conditions' => array(
+				'Location.id = Event.location_id',
+			)
+		),
+		array(
+			'table' => 'purposes',
+			'alias' => 'Purpose',
+			'type' => 'LEFT',
+			'conditions' => array(
+				'Purpose.id = Event.purpose_id',
+			)
+		),
+	);
 
 /**
  * Validation rules

@@ -36,7 +36,11 @@ class ProjectsController extends AppController {
 		if (!$this->Project->exists($id)) {
 			throw new NotFoundException(__('Invalid project'));
 		}
-		$options = array('conditions' => array('Project.' . $this->Project->primaryKey => $id));
+		$options = array(
+			'conditions' => array('Project.' . $this->Project->primaryKey => $id),
+// 			'joins' => array_merge($this->Project->joins, $this->Project->Event->joins),
+// 			'recursive' => 0
+		);
 		$this->set('project', $this->Project->find('first', $options));
 	}
 
@@ -55,7 +59,11 @@ class ProjectsController extends AppController {
 				$this->Session->setFlash(__('The project could not be saved. Please, try again.'));
 			}
 		}
-		$events = $this->Project->Event->find('list');
+		$this->Project->Event->displayField = 'display';
+		$this->Project->Event->virtualFields += $this->Project->Event->foreignFields;
+		$events = $this->Project->Event->find('list', array(
+			'joins' => $this->Project->Event->joins
+		));
 		$this->set(compact('events'));
 	}
 
@@ -78,10 +86,18 @@ class ProjectsController extends AppController {
 				$this->Session->setFlash(__('The project could not be saved. Please, try again.'));
 			}
 		} else {
-			$options = array('conditions' => array('Project.' . $this->Project->primaryKey => $id));
+			$options = array(
+				'conditions' => array('Project.' . $this->Project->primaryKey => $id), 
+// 				'joins' => array_merge($this->Project->joins, $this->Project->Event->joins),
+// 				'recursive' => -1
+			);
 			$this->request->data = $this->Project->find('first', $options);
 		}
-		$events = $this->Project->Event->find('list');
+		$this->Project->Event->displayField = 'display';
+		$this->Project->Event->virtualFields += $this->Project->Event->foreignFields;
+		$events = $this->Project->Event->find('list', array(
+			'joins' => $this->Project->Event->joins, 
+		));
 		$this->set(compact('events'));
 	}
 

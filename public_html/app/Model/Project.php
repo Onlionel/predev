@@ -6,6 +6,24 @@ App::uses('AppModel', 'Model');
  * @property Event $Event
  */
 class Project extends AppModel {
+	public $joins = array(
+		array(
+			'table' => 'projects_events',
+			'alias' => 'ProjectsEvent',
+			'type' => 'LEFT',
+			'conditions' => array(
+				'Project.id = ProjectsEvent.project_id',
+			)
+		),
+		array(
+			'table' => 'events',
+			'alias' => 'Event',
+			'type' => 'LEFT',
+			'conditions' => array(
+				'Event.id = ProjectsEvent.event_id',
+			)
+		)
+	);
 
 /**
  * Validation rules
