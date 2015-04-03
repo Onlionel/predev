@@ -50,7 +50,7 @@ class MediaFile extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 			'extension' => array(
-				'rule' => array('extension', array('mov', 'mp4', 'mpg', 'avi', 'mp3', 'm4a', 'wav', 'aiff')),
+				'rule' => array('extension', array('mov', 'mp4', 'mpg', 'avi', 'mp3', 'm4a', 'wav', 'aiff', 'bmp', 'jpg', 'png')),
 				'message' => 'Please supply a valid file extension.'
 			)
 		),
