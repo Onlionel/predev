@@ -20,7 +20,7 @@ $cakeDescription = __d('cake_dev', 'PMM Media - Media Management System');
 $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 ?>
 <!DOCTYPE html>
-<html>
+<html height="100%">
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
@@ -37,10 +37,12 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->fetch('script');
 	?>
 </head>
-<body>
+<body height="100%">
 	<div id="container">
 		<div id="header">
 			<h1><?php echo $this->Html->link($cakeDescription, 'http://cakephp.org'); ?></h1>
+		</div>
+		<div id="slider">
 		</div>
 		<div id="content">
 
