@@ -11,7 +11,7 @@ in order to evaluate the results of the projects that came to fruition.
      * Audiences (Who),
      * Activities (What),
      * Locations (Where),
-     * Dates (When) and
+     * Dates and Times (When) and
      * Purposes (Why)
 
   * Additionally data storage for 
