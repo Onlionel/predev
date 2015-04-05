@@ -21,7 +21,7 @@ $appDescription = __d('app_dev', 'PMM Media - Media Management System');
 $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 ?>
 <!DOCTYPE html>
-<html height="100%">
+<html>
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
@@ -38,7 +38,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->fetch('script');
 	?>
 </head>
-<body height="100%">
+<body>
 	<div id="container">
 		<div id="header">
 			<h1><?php echo $this->Html->link($appDescription, '/'); ?></h1>
